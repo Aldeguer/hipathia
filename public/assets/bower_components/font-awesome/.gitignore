@@ -10,10 +10,6 @@
 .installed.cfg
 _gh_pages/*
 
-.idea/*
-.svn/*
-src/website/static/*
-src/website/media/*
 
 cfcache
 develop-eggs
