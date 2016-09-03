@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGOLAB_URI||'mongodb://localhost/hypathia');
+mongoose.connect('mongodb://heroku_ngpn52ww:6l94gmsa35o04uhlii1u1i18l7@ds021016.mlab.com:21016/heroku_ngpn52ww'||'mongodb://localhost/hypathia');
 
 var db = mongoose.connection;
 
