@@ -1,0 +1,27 @@
+{
+  "name": "academiaweb",
+  "homepage": "https://github.com/MiriamMD/AcademiaWeb",
+  "directory": "./public/assets",
+  "authors": [
+    "Carlos Aldeguer <c.aldeguer.s@gmail.com>",
+    "Miriam Merchante <mimerchante27@gmail.com>"
+  ],
+  "description": "A MEAN application",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "./public/assets/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.6",
+    "angular-sanitize": "^1.5.5",
+    "angular-ui-router": "^0.2.18",
+    "font-awesome": "^4.6.1",
+    "less": "^2.7.1"
+  }
+}

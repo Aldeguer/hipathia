@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="hypathiaAcademy" ng-controller="AppController">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title ng-bind-html="model.title">Hipathia</title>
+    <link rel="stylesheet" type="text/css" href="dist/style.css">
+</head>
+
+<body ng-cloak>
+<div class="container">    
+    <div ng-include="'code/Menu/MenuView.html'"></div>
+    <img src="/assets/images/Logo.jpg" class="img-responsive img-rounded center-block" alt="Responsive image">
+
+    <div ui-view>
+    <div ng-include="'code/Home/HomeView.html'"></div>
+    </div>
+
+    <div ng-include="'code/Footer/FooterView.html'"></div>
+    <script src="dist/app.js"></script>
+</div>
+</body>
+
+</html>
+
