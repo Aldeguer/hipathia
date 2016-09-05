@@ -25,7 +25,7 @@ hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universi
                             $scope.campus = data;
                             console.log("CAMPUS", $scope.campus);
 
-                            var max = $scope.campus.length-1;
+                            var max = $scope.campus.length;
                             var cnt = 0;
                             console.log(max);
                             for (var i = 0; max; i++){
