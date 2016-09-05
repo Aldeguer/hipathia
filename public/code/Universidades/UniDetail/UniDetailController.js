@@ -4,7 +4,8 @@ hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universi
         //Scope init
         $scope.model = '';
         $scope.campus = '';
-        $scope.grados = '';
+        $scope.grados1 = '';
+        $scope.grados2 = '';
         var idGrados = [];
         var idGradosDef = [];
         $scope.campus1 = [];
@@ -24,32 +25,33 @@ hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universi
                         function(data){
                             $scope.campus = data;
                             console.log("CAMPUS", $scope.campus);
-
-                            var max = $scope.campus.length;
-                            var cnt = 0;
-                            console.log(max);
-                                
-                                idGrados = idGrados.concat($scope.campus[0].grados_id);
-                                idGrados = idGrados.concat($scope.campus[1].grados_id);
-
-                                
-                                    
-                                    APIClient.getGrados(idGrados).then(
+                                   
+                                    APIClient.getGrados($scope.campus[0].grados_id).then(
                                         function(data){   
-                                            $scope.grados = data;
-                                            console.log("GRADOS", $scope.grados);
-                                            subarray = $scope.campus.length/2;
-                                            $scope.campus1 = $scope.campus.slice(0, Math.floor(subarray));
-                                            $scope.campus2 = $scope.campus.slice(Math.floor(subarray), $scope.campus.length);
-                                            console.log("CAMPUS1", $scope.campus1);
-                                            console.log("CAMPUS2", $scope.campus2);
+                                            $scope.grados1 = data;
+
+                                            APIClient.getGrados($scope.campus[1].grados_id).then(
+                                                function(data){   
+                                                $scope.grados2 = data;
+                                                subarray = $scope.campus.length/2;
+                                                $scope.campus1 = $scope.campus.slice(0, Math.floor(subarray));
+                                                $scope.campus2 = $scope.campus.slice(Math.floor(subarray), $scope.campus.length);
+                                                console.log("CAMPUS1", $scope.campus1);
+                                                console.log("CAMPUS2", $scope.campus2);
 
                                             //TODO por aqui va el true so sigue aqui
-                                    },
-                                    function(){
-                                        alert('Error');
-                                    }
-                                );; 
+                                            },
+                                            function(){
+                                                alert('Error');
+                                            }
+                                        );; 
+                                            
+                                            //TODO por aqui va el true so sigue aqui
+                                        },
+                                        function(){
+                                            alert('Error');
+                                        }
+                                    );; 
                          
                      
 
