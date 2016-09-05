@@ -20,7 +20,6 @@ hypathiaAcademy.controller('GradosController', ['$scope', '$state', 'grados', 'A
                 $scope.grados = $scope.model.data;
                 APIClient.getAsignaturas($scope.model.data.asignaturas_id).then(
                     function(data) {
-                        //$scope.advertsShowed.push(data);
                         $scope.asignaturasPre = data;
 
                         //CONTROL DE SEMESTRE --- CAMBIAR EL NUMERO DE LA PARTE IZQUIERDA DEL IF

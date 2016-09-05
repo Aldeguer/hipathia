@@ -25,11 +25,6 @@ hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universi
                             $scope.campus = data;
                             console.log("CAMPUS", $scope.campus);
 
-                            subarray = $scope.campus.length/2;
-                            $scope.campus1 = $scope.campus.slice(0, Math.floor(subarray));
-                            $scope.campus2 = $scope.campus.slice(Math.floor(subarray), $scope.campus.length);
-                            console.log("CAMPUS1", $scope.campus1);
-                            console.log("CAMPUS2", $scope.campus2);
                             var max = $scope.campus.length-1;
                             var cnt = 0;
                             console.log(max);
@@ -37,7 +32,7 @@ hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universi
                                 idGrados = idGrados.concat($scope.campus[i].grados_id);
 
                                 if(++cnt === max){
-                                    var aux = idGrados.length;
+                                    var aux = idGrados.length-1;
                                     var start = 0;
                                     while(start<aux){
                                         if(idGradosDef.indexOf(idGrados[start]) === -1){
@@ -50,6 +45,11 @@ hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universi
                                         function(data){   
                                             $scope.grados = data;
                                             console.log("GRADOS", $scope.grados);
+                                            subarray = $scope.campus.length/2;
+                                            $scope.campus1 = $scope.campus.slice(0, Math.floor(subarray));
+                                            $scope.campus2 = $scope.campus.slice(Math.floor(subarray), $scope.campus.length);
+                                            console.log("CAMPUS1", $scope.campus1);
+                                            console.log("CAMPUS2", $scope.campus2);
 
                                             //TODO por aqui va el true so sigue aqui
                                     },
