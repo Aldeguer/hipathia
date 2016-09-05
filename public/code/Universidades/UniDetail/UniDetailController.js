@@ -14,17 +14,22 @@ hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universi
             if (universidad.data) {
                 if (universidad.data.length === 0) {
                     $scope.uiState = 'blank';
+                    console.log("DATA", universidad.data.length);
 
                 } else {
                     $scope.uiState = 'ideal';
                     $scope.model = universidad;
+                    console.log("MODEL", $scope.model);
                     APIClient.getCampus($scope.model.data.campus_id).then(
                         function(data){
                             $scope.campus = data;
+                            console.log("CAMPUS", $scope.campus);
+
                             subarray = $scope.campus.length/2;
                             $scope.campus1 = $scope.campus.slice(0, Math.floor(subarray));
                             $scope.campus2 = $scope.campus.slice(Math.floor(subarray), $scope.campus.length);
-                            
+                            console.log("CAMPUS1", $scope.campus1);
+                            console.log("CAMPUS2", $scope.campus2);
                             var max = $scope.campus.length-1;
                             var cnt = 0;
                             console.log(max);
@@ -44,6 +49,8 @@ hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universi
                                     APIClient.getGrados(idGradosDef).then(
                                         function(data){   
                                             $scope.grados = data;
+                                            console.log("GRADOS", $scope.grados);
+
                                             //TODO por aqui va el true so sigue aqui
                                     },
                                     function(){
@@ -64,10 +71,7 @@ hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universi
             }
          
         /*** Scope methods ***/
-        console.log("CAMPUS", $scope.campus);
-        console.log("CAMPUS1", $scope.campus1);
-        console.log("CAMPUS2", $scope.campus2);
-        console.log("GRADOS", $scope.grados);
+
         /*** Scope start ***/
 
      
