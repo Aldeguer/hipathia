@@ -28,20 +28,14 @@ hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universi
                             var max = $scope.campus.length;
                             var cnt = 0;
                             console.log(max);
-                            for (var i = 0; max; i++){
+                            for (var i = 0; max+2; i++){
                                 idGrados = idGrados.concat($scope.campus[i].grados_id);
 
                                 if(++cnt === max){
                                     var aux = idGrados.length-1;
                                     var start = 0;
-                                    while(start<aux){
-                                        if(idGradosDef.indexOf(idGrados[start]) === -1){
-                                            idGradosDef = idGradosDef.concat(idGrados[start]);
-                                        }
-                                        start++;
-                                    }
-
-                                    APIClient.getGrados(idGradosDef).then(
+                                    
+                                    APIClient.getGrados(idGrados).then(
                                         function(data){   
                                             $scope.grados = data;
                                             console.log("GRADOS", $scope.grados);

@@ -2,13 +2,24 @@
 <html>
 	<div class="container">
 		<div class="row">
-			<div ng-repeat="campu in campus"> 
+			<div ng-repeat="campu1 in campus1"> 
 				<div class="col-md-5"> 
-					<h3>Campus de {{::campu.nombre}} </h3>
-					{{::campu._id}}
-					{{campu.grados}}
+					<h3>Campus de {{::campu1.nombre}} </h3>
 					<div ng-repeat="grado in grados">
+						<div ng-if="(campu1.grados_id).indexOf(grado._id) !== -1">
 	   						<li><a ui-sref="grados({_id:grado._id})" >{{::grado.nombre}}</a></li>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div ng-repeat="campu2 in campus2"> 
+				<div class="col-md-5"> 
+					<h3>Campus de {{::campu2.nombre}} </h3>
+					<div ng-repeat="grado in grados">
+						<div ng-if="(campu2.grados_id).indexOf(grado._id) !== -1">
+							<li><a ui-sref="grados({_id:grado._id})" >{{::grado.nombre}}</a></li>
+						</div>
 					</div>
 				</div>
 			</div>
