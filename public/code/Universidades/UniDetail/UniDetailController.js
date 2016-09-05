@@ -64,7 +64,10 @@ hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universi
             }
          
         /*** Scope methods ***/
-
+        console.log("CAMPUS", $scope.campus);
+        console.log("CAMPUS1", $scope.campus1);
+        console.log("CAMPUS2", $scope.campus2);
+        console.log("GRADOS", $scope.grados);
         /*** Scope start ***/
 
      
