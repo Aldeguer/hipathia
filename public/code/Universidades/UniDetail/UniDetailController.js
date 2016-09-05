@@ -28,12 +28,11 @@ hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universi
                             var max = $scope.campus.length;
                             var cnt = 0;
                             console.log(max);
-                            for (var i = 0; max+2; i++){
-                                idGrados = idGrados.concat($scope.campus[i].grados_id);
+                                
+                                idGrados = idGrados.concat($scope.campus[0].grados_id);
+                                idGrados = idGrados.concat($scope.campus[1].grados_id);
 
-                                if(++cnt === max){
-                                    var aux = idGrados.length-1;
-                                    var start = 0;
+                                
                                     
                                     APIClient.getGrados(idGrados).then(
                                         function(data){   
@@ -51,8 +50,7 @@ hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universi
                                         alert('Error');
                                     }
                                 );; 
-                            }
-                        }
+                         
                      
 
                     },
