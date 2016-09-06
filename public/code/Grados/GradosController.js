@@ -9,7 +9,7 @@ hypathiaAcademy.controller('GradosController', ['$scope', '$state', 'grados', 'A
         $scope.asignaturas1 = [];
         $scope.asignaturas2 = [];
         var subarray = 0;
-
+        
         if (grados.data) {
             if (grados.data.length === 0) {
                 $scope.uiState = 'blank';
@@ -28,6 +28,7 @@ hypathiaAcademy.controller('GradosController', ['$scope', '$state', 'grados', 'A
                         while(startCuatri<auxCuatri){
                             if($scope.asignaturasPre[startCuatri].cuatri === 1 || $scope.asignaturasPre[startCuatri].cuatri === 3){
                                 $scope.asignaturas = $scope.asignaturas.concat($scope.asignaturasPre[startCuatri]);
+                                console.log("Miriam was here");
                             }
                             startCuatri++;
                         }
