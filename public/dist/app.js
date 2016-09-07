@@ -40237,6 +40237,13 @@ hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universi
                                     APIClient.getGrados(idGrados).then(
                                         function(data){   
                                             $scope.grados = data;
+                                            console.log("GRADOS", $scope.grados);
+                                            subarray = $scope.campus.length/2;
+                                            $scope.campus1 = $scope.campus.slice(0, Math.floor(subarray));
+                                            $scope.campus2 = $scope.campus.slice(Math.floor(subarray), $scope.campus.length);
+                                            console.log("CAMPUS1", $scope.campus1);
+                                            console.log("CAMPUS2", $scope.campus2);
+
                                             //TODO por aqui va el true so sigue aqui
                                     },
                                     function(){
