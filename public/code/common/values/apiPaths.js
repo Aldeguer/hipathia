@@ -4,5 +4,6 @@ angular.module('hypathiaAcademy').constant('apiPaths', {
 	campus: 'api/v1/campus/campus',
 	grados: 'api/v1/grados/grados',
 	grado: 'api/v1/grados/:id',
-	asignaturas: 'api/v1/asignaturas/asignaturas'
+	asignaturas: 'api/v1/asignaturas/asignaturas',
+	contacto: 'api/v1/contacto'
 });

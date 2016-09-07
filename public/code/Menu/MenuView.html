@@ -1,30 +1,27 @@
 <div ng-controller="MenuController">
-    <div class="bs-example bs-navbar-top-example" data-example-id="navbar-fixed-to-top">
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a ui-sref="home" class="navbar-brand">Hipathia</a>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Universidades 
-                      <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li ng-repeat="item in model"><a ui-sref="uniDetail({_id:item._id})" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" >{{::item.nombre}}</a> </li>
-                               
-                            </ul>
-                        </li>
-                        <li><a ui-sref="contacto" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6">Contacto</a></li>
-                    </ul>
-                </div>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a ui-sref="home" class="navbar-brand">Hipathia</a>
             </div>
-        </nav>
-    </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Universidades 
+                      <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="item in model"><a ui-sref="uniDetail({_id:item._id})" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6">{{::item.nombre}}</a> </li>
+                        </ul>
+                    </li>
+                    <li><a ui-sref="contacto" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </div>

@@ -9,6 +9,7 @@ hypathiaAcademy.controller('AppController', ['$scope', '$window', '$location', '
         controller.titles[paths.url.universidades] = paths.titles.universidades;
         controller.titles[paths.url.detailUni] = paths.titles.detailUni;
         controller.titles[paths.url.grados] = paths.titles.grados;
+        controller.titles[paths.url.contacto] = paths.titles.contacto;
 
 
         /*** scope init ***/

@@ -142,6 +142,10 @@ angular.module('hypathiaAcademy').service('APIClient', ['$window', '$http', '$q'
             return this.postRequest(apiPaths.asignaturas, arrayIdAsignaturas);
         };
 
+         this.sendEmail = function(modelo) {
+            return this.postRequest(apiPaths.contacto, modelo);
+        };
+
         this.putUser = function(userId, item) {
             var url = URL.resolve(apiPaths.user, { id: userId });
             return this.putRequest(url, item);

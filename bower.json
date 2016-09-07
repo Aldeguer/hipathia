@@ -21,7 +21,7 @@
     "bootstrap": "^3.3.6",
     "angular-sanitize": "^1.5.5",
     "angular-ui-router": "^0.2.18",
-    "font-awesome": "^4.6.1",
+    "font-awesome": "fontawesome#^4.6.3",
     "less": "^2.7.1"
   }
 }

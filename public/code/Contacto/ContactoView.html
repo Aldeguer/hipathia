@@ -1,16 +1,42 @@
-<!DOCTYPE html>
-<html>
-	<body>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-offset-1 col-sm-3 col-md-4">
-					<iframe width="300" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=40.287835%2C%20-3.818976&key=AIzaSyAQWWeEkd22Ix0iHqrWiW6q2_F6caX0Xmo" allowfullscreen></iframe>
-				</div>
-				<div class="col-md-offset-2 col-sm-3 col-md-4">
-					<h3> Telefono: </h3> <p> 677 15 34 82 </p>
-					<h3> Email: </h3> <p> info@hipathia.com </p>
-				</div>
-			</div>
-		</div>
-	</body>
-</html>
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        <iframe class="map" src="https://www.google.com/maps/embed/v1/place?q=40.287835%2C%20-3.818976&key=AIzaSyAQWWeEkd22Ix0iHqrWiW6q2_F6caX0Xmo" allowfullscreen></iframe>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <div class="form-group">
+            <form name="contactForm" novalidate class="form-horizontal" ng-submit="save()">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">Nombre</span>
+                            <input class="form-control" type="text" ng-model="model.name" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon2">Email</span>
+                            <input class="form-control" name="email" type="email" ng-model="model.email" required/>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="alert alert-warning alert-dismissible" role="alert" ng-show="contactForm.email.$dirty && contactForm.email.$error.email">
+                            <strong>Formato de email incorrecto</strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon3">Teléfono</span>
+                            <input class="form-control" type="text" ng-model="model.telefono" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <textarea class="form-control" rows="5" placeholder="Deja aquí tu duda..." id="comment" required></textarea>
+                    </div>
+                    <div class="col-sm-12">
+                        <button class="btn btn-default" ng-disabled="contactForm.$invalid" type="submit"> Enviar duda </button>
+                    </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>

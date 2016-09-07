@@ -1,17 +1,21 @@
 h2 {
-	color: @bgDefault;
-    font-weight: bold;
-
+    color: @bgDefault;
 }
 
 li {
     list-style-type: none;
     > a {
-    	color: @blackIsBack;
+        color: @blackIsBack;
+        &:hover {
+            text-decoration: none;
+            color: @bgDefault;
+        }
     }
 }
 
-h3 {
-	color: @bgDefault;
-	font-weight: bold;
+.containerCampus {
+    text-align: center;
+    h3 {
+        color: @bgDefault;
+    }
 }

@@ -25,6 +25,8 @@ var dias = require('./routes/api/v1/dias');*/
 var grados = require('./routes/api/v1/grados');
 var universidades = require('./routes/api/v1/universidades');
 var campus = require('./routes/api/v1/campus');
+var contacto = require('./routes/api/v1/contacto');
+
 
 
 var app = express();
@@ -51,6 +53,7 @@ app.use('/api/v1/dias', dias);*/
 app.use('/api/v1/grados', grados);
 app.use('/api/v1/universidades', universidades);
 app.use('/api/v1/campus', campus);
+app.use('/api/v1/contacto', contacto);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

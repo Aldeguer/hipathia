@@ -39521,23 +39521,6 @@ hypathiaAcademy.config(['$stateProvider', '$urlRouterProvider', 'paths', 'apiPat
     }
 ]);
 
-hypathiaAcademy.controller('ContactoController', ['$scope', '$state', 
-    function($scope, $state ) {
-
-        //Scope init
-    
-     
-        /*** Scope methods ***/
-
-       
-
-        /*** Scope start ***/
-
-     
-
-    }
-]);
-
 
 hypathiaAcademy.controller('FooterController', ['$scope', '$state',
     function($scope, $state ) {
@@ -39557,6 +39540,32 @@ hypathiaAcademy.controller('FooterController', ['$scope', '$state',
     }
 ]);
 
+hypathiaAcademy.controller('ContactoController', ['$scope', '$state', 'APIClient',
+    function($scope, $state, APIClient) {
+
+        //Scope init
+        $scope.model = '';
+
+
+        /*** Scope methods ***/
+        $scope.save = function() {
+            APIClient.sendEmail($scope.model) .then(
+                    function(data) {
+                      alert('Email send');
+                    },
+                    function() {
+                        alert('Error');
+                    }
+                )
+        }
+
+
+
+
+
+    }
+]);
+
 hypathiaAcademy.controller('GradosController', ['$scope', '$state', 'grados', 'APIClient',
     function($scope, $state, grados, APIClient) {
     	
@@ -39568,7 +39577,7 @@ hypathiaAcademy.controller('GradosController', ['$scope', '$state', 'grados', 'A
         $scope.asignaturas1 = [];
         $scope.asignaturas2 = [];
         var subarray = 0;
-
+        
         if (grados.data) {
             if (grados.data.length === 0) {
                 $scope.uiState = 'blank';
@@ -39579,7 +39588,6 @@ hypathiaAcademy.controller('GradosController', ['$scope', '$state', 'grados', 'A
                 $scope.grados = $scope.model.data;
                 APIClient.getAsignaturas($scope.model.data.asignaturas_id).then(
                     function(data) {
-                        //$scope.advertsShowed.push(data);
                         $scope.asignaturasPre = data;
 
                         //CONTROL DE SEMESTRE --- CAMBIAR EL NUMERO DE LA PARTE IZQUIERDA DEL IF
@@ -39588,6 +39596,7 @@ hypathiaAcademy.controller('GradosController', ['$scope', '$state', 'grados', 'A
                         while(startCuatri<auxCuatri){
                             if($scope.asignaturasPre[startCuatri].cuatri === 1 || $scope.asignaturasPre[startCuatri].cuatri === 3){
                                 $scope.asignaturas = $scope.asignaturas.concat($scope.asignaturasPre[startCuatri]);
+                                console.log("Miriam was here");
                             }
                             startCuatri++;
                         }
@@ -39687,6 +39696,7 @@ hypathiaAcademy.controller('AppController', ['$scope', '$window', '$location', '
         controller.titles[paths.url.universidades] = paths.titles.universidades;
         controller.titles[paths.url.detailUni] = paths.titles.detailUni;
         controller.titles[paths.url.grados] = paths.titles.grados;
+        controller.titles[paths.url.contacto] = paths.titles.contacto;
 
 
         /*** scope init ***/
@@ -39710,13 +39720,6 @@ hypathiaAcademy.controller('AppController', ['$scope', '$window', '$location', '
     }
 ]);
 
-hypathiaAcademy.filter('ago',
-	[function() {
-		return function(text) {
-			return moment(text).fromNow(true);
-		};
-	}]
-);
 angular.module('hypathiaAcademy').service('APIClient', ['$window', '$http', '$q', '$filter', '$log', 'apiPaths', 'URL',
     function($window, $http, $q, $filter, $log, apiPaths, URL) {
 
@@ -39859,6 +39862,10 @@ angular.module('hypathiaAcademy').service('APIClient', ['$window', '$http', '$q'
 
         this.getAsignaturas = function(arrayIdAsignaturas) {
             return this.postRequest(apiPaths.asignaturas, arrayIdAsignaturas);
+        };
+
+         this.sendEmail = function(modelo) {
+            return this.postRequest(apiPaths.contacto, modelo);
         };
 
         this.putUser = function(userId, item) {
@@ -40152,13 +40159,21 @@ angular.module('URL', []).service('URL', ['$log', function($log){
 	};
 
 }]);
+hypathiaAcademy.filter('ago',
+	[function() {
+		return function(text) {
+			return moment(text).fromNow(true);
+		};
+	}]
+);
 angular.module('hypathiaAcademy').constant('apiPaths', {
 	universidades: 'api/v1/universidades',
 	universidad: 'api/v1/universidades/:id',
 	campus: 'api/v1/campus/campus',
 	grados: 'api/v1/grados/grados',
 	grado: 'api/v1/grados/:id',
-	asignaturas: 'api/v1/asignaturas/asignaturas'
+	asignaturas: 'api/v1/asignaturas/asignaturas',
+	contacto: 'api/v1/contacto'
 });
 hypathiaAcademy.constant('paths', {
 
@@ -40184,6 +40199,71 @@ hypathiaAcademy.constant('paths', {
 });
 
 
+hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universidad', 'APIClient',
+    function($scope, $state, universidad, APIClient) {
+        
+        //Scope init
+        $scope.model = '';
+        $scope.campus = '';
+        $scope.grados = '';
+        var idGrados = [];
+        var idGradosDef = [];
+        $scope.campus1 = [];
+        $scope.campus2 = [];
+        var subarray = 0;
+          
+            if (universidad.data) {
+                if (universidad.data.length === 0) {
+                    $scope.uiState = 'blank';
+                    console.log("DATA", universidad.data.length);
+
+                } else {
+                    $scope.uiState = 'ideal';
+                    $scope.model = universidad;
+                    console.log("MODEL", $scope.model);
+                    APIClient.getCampus($scope.model.data.campus_id).then(
+                        function(data){
+                            $scope.campus = data;
+                            console.log("CAMPUS", $scope.campus);
+
+                            var max = $scope.campus.length;
+                            var cnt = 0;
+                            console.log(max);
+                                idGrados = $scope.campus[0].grados_id.concat(idGrados);
+                                idGrados = $scope.campus[1].grados_id.concat(idGrados);
+
+
+                                                                       
+                                    APIClient.getGrados(idGrados).then(
+                                        function(data){   
+                                            $scope.grados = data;
+                                            //TODO por aqui va el true so sigue aqui
+                                    },
+                                    function(){
+                                        alert('Error');
+                                    }
+                                );; 
+                       
+                     
+
+                    },
+                    function(){
+                        alert('Error');
+                    }
+                    );;
+
+                }   
+            }
+         
+        /*** Scope methods ***/
+
+        /*** Scope start ***/
+
+     
+
+    }
+]);
+
 hypathiaAcademy.controller('UniversidadesController', ['$scope', '$state','$stateParams','universidades',
     function($scope, $state,$stateParams,universidades ) {
 
@@ -40203,80 +40283,6 @@ hypathiaAcademy.controller('UniversidadesController', ['$scope', '$state','$stat
         /*** Scope methods ***/
 
        
-
-        /*** Scope start ***/
-
-     
-
-    }
-]);
-
-hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universidad', 'APIClient',
-    function($scope, $state, universidad, APIClient) {
-        
-        //Scope init
-        $scope.model = '';
-        $scope.campus = '';
-        $scope.grados = '';
-        var idGrados = [];
-        var idGradosDef = [];
-        $scope.campus1 = [];
-        $scope.campus2 = [];
-        var subarray = 0;
-          
-            if (universidad.data) {
-                if (universidad.data.length === 0) {
-                    $scope.uiState = 'blank';
-
-                } else {
-                    $scope.uiState = 'ideal';
-                    $scope.model = universidad;
-                    APIClient.getCampus($scope.model.data.campus_id).then(
-                        function(data){
-                            $scope.campus = data;
-                            subarray = $scope.campus.length/2;
-                            $scope.campus1 = $scope.campus.slice(0, Math.floor(subarray));
-                            $scope.campus2 = $scope.campus.slice(Math.floor(subarray), $scope.campus.length);
-                            
-                            var max = $scope.campus.length-1;
-                            var cnt = 0;
-                            console.log(max);
-                            for (var i = 0; max; i++){
-                                idGrados = idGrados.concat($scope.campus[i].grados_id);
-
-                                if(++cnt === max){
-                                    var aux = idGrados.length;
-                                    var start = 0;
-                                    while(start<aux){
-                                        if(idGradosDef.indexOf(idGrados[start]) === -1){
-                                            idGradosDef = idGradosDef.concat(idGrados[start]);
-                                        }
-                                        start++;
-                                    }
-
-                                    APIClient.getGrados(idGradosDef).then(
-                                        function(data){   
-                                            $scope.grados = data;
-                                            //TODO por aqui va el true so sigue aqui
-                                    },
-                                    function(){
-                                        alert('Error');
-                                    }
-                                );; 
-                            }
-                        }
-                     
-
-                    },
-                    function(){
-                        alert('Error');
-                    }
-                    );;
-
-                }   
-            }
-         
-        /*** Scope methods ***/
 
         /*** Scope start ***/
 
