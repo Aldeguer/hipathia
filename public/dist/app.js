@@ -39521,6 +39521,34 @@ hypathiaAcademy.config(['$stateProvider', '$urlRouterProvider', 'paths', 'apiPat
     }
 ]);
 
+hypathiaAcademy.controller('ContactoController', ['$scope', '$state', 'APIClient',
+    function($scope, $state, APIClient) {
+
+        //Scope init
+        $scope.model = '';
+        $scope.hiddenGood = false
+        $scope.hiddenBad = false
+
+        /*** Scope methods ***/
+        $scope.save = function() {
+            APIClient.sendEmail($scope.model).then(
+                function(data) {
+                    $scope.hiddenGood = true;
+                },
+                function() {
+                    $scope.hiddenBad = true;
+
+                }
+            )
+        }
+
+
+
+
+
+    }
+]);
+
 
 hypathiaAcademy.controller('FooterController', ['$scope', '$state',
     function($scope, $state ) {
@@ -39536,32 +39564,6 @@ hypathiaAcademy.controller('FooterController', ['$scope', '$state',
         /*** Scope start ***/
 
      
-
-    }
-]);
-
-hypathiaAcademy.controller('ContactoController', ['$scope', '$state', 'APIClient',
-    function($scope, $state, APIClient) {
-
-        //Scope init
-        $scope.model = '';
-
-
-        /*** Scope methods ***/
-        $scope.save = function() {
-            APIClient.sendEmail($scope.model) .then(
-                    function(data) {
-                      alert('Email send');
-                    },
-                    function() {
-                        alert('Error');
-                    }
-                )
-        }
-
-
-
-
 
     }
 ]);
@@ -39720,6 +39722,13 @@ hypathiaAcademy.controller('AppController', ['$scope', '$window', '$location', '
     }
 ]);
 
+hypathiaAcademy.filter('ago',
+	[function() {
+		return function(text) {
+			return moment(text).fromNow(true);
+		};
+	}]
+);
 angular.module('hypathiaAcademy').service('APIClient', ['$window', '$http', '$q', '$filter', '$log', 'apiPaths', 'URL',
     function($window, $http, $q, $filter, $log, apiPaths, URL) {
 
@@ -40159,13 +40168,6 @@ angular.module('URL', []).service('URL', ['$log', function($log){
 	};
 
 }]);
-hypathiaAcademy.filter('ago',
-	[function() {
-		return function(text) {
-			return moment(text).fromNow(true);
-		};
-	}]
-);
 angular.module('hypathiaAcademy').constant('apiPaths', {
 	universidades: 'api/v1/universidades',
 	universidad: 'api/v1/universidades/:id',
@@ -40198,6 +40200,33 @@ hypathiaAcademy.constant('paths', {
     }
 });
 
+
+hypathiaAcademy.controller('UniversidadesController', ['$scope', '$state','$stateParams','universidades',
+    function($scope, $state,$stateParams,universidades ) {
+
+        //Scope init
+        $scope.model ='' ;
+        $scope.id = '';
+          if (universidades.data) {
+            if (universidades.data.length === 0) {
+                $scope.uiState = 'blank';
+
+            } else {
+                $scope.uiState = 'ideal';
+                $scope.model = universidades;
+            }
+        }
+     
+        /*** Scope methods ***/
+
+       
+
+        /*** Scope start ***/
+
+     
+
+    }
+]);
 
 hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universidad', 'APIClient',
     function($scope, $state, universidad, APIClient) {
@@ -40237,13 +40266,6 @@ hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universi
                                     APIClient.getGrados(idGrados).then(
                                         function(data){   
                                             $scope.grados = data;
-                                            console.log("GRADOS", $scope.grados);
-                                            subarray = $scope.campus.length/2;
-                                            $scope.campus1 = $scope.campus.slice(0, Math.floor(subarray));
-                                            $scope.campus2 = $scope.campus.slice(Math.floor(subarray), $scope.campus.length);
-                                            console.log("CAMPUS1", $scope.campus1);
-                                            console.log("CAMPUS2", $scope.campus2);
-
                                             //TODO por aqui va el true so sigue aqui
                                     },
                                     function(){
@@ -40263,33 +40285,6 @@ hypathiaAcademy.controller('UniDetailController', ['$scope', '$state', 'universi
             }
          
         /*** Scope methods ***/
-
-        /*** Scope start ***/
-
-     
-
-    }
-]);
-
-hypathiaAcademy.controller('UniversidadesController', ['$scope', '$state','$stateParams','universidades',
-    function($scope, $state,$stateParams,universidades ) {
-
-        //Scope init
-        $scope.model ='' ;
-        $scope.id = '';
-          if (universidades.data) {
-            if (universidades.data.length === 0) {
-                $scope.uiState = 'blank';
-
-            } else {
-                $scope.uiState = 'ideal';
-                $scope.model = universidades;
-            }
-        }
-     
-        /*** Scope methods ***/
-
-       
 
         /*** Scope start ***/
 

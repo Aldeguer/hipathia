@@ -4,30 +4,30 @@ var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 var transport = nodemailer.createTransport(smtpTransport({
-    service: 'gmail',
+    host: 'smtp.zoho.com',
+    port: 465,
     auth: {
-        user: 'mimerchante27@gmail.com',
-        pass: 'm2i7r0i6a9m40276'
+        user: 'info@academiahipathia.com',
+        pass: 'Edurne12'
     }
 }));
 router.route('/')
 
 .post(function(req, res) {
-  console.log(req.body);
+    console.log(req.body);
     var mailOptions = {
-        to: req.body.email,
-        subject: 'Hipathya Duda',
-        from: 'mimerchante27@gmail.com',
-        text: req.body.duda
+        from: 'info@academiahipathia.com',
+        to: 'info@academiahipathia.com',
+        subject: 'Hipathia Duda',
+        text: 'Duda: ' + req.body.duda + '\n Nombre: ' + req.body.nombre + '\n Email: '+ req.body.email + '\n Telefono: ' + req.body.telefono
     };
     transport.sendMail(mailOptions, function(err, info) {
         if (err) {
-            return res.status(400).send({ err: 'Not found' });
-        } 
+            return res.status(400).send({ err: err });
+        }
 
         return res.status(200).send(info);
     });
 });
 
 module.exports = router;
-
