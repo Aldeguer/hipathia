@@ -1,47 +1,62 @@
-<div class="row">
-    <div class="col-sm-12 col-md-6">
-        <h4> Estamos aquí</h4>
-        <iframe class="map" src="https://www.google.com/maps/embed/v1/place?q=40.287835%2C%20-3.818976&key=AIzaSyAQWWeEkd22Ix0iHqrWiW6q2_F6caX0Xmo" allowfullscreen></iframe>
-    </div>
-    <div class="col-sm-12 col-md-6">
-        <h4> Envíanos tu duda</h4>
-        <div class="form-group">
-            <form name="contactForm" novalidate class="form-horizontal" ng-submit="save()">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon1">Nombre*</span>
-                            <input class="form-control" type="text" ng-model="model.nombre" required />
+<div class="containerContacto">
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <h4> Estamos aquí</h4>
+            <iframe class="map" src="https://www.google.com/maps/embed/v1/place?q=40.287835%2C%20-3.818976&key=AIzaSyAQWWeEkd22Ix0iHqrWiW6q2_F6caX0Xmo" allowfullscreen></iframe>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <h4> Envíanos tu duda</h4>
+            <div class="form-group">
+                <form name="contactForm" novalidate class="form-horizontal" ng-submit="save()">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Nombre*</span>
+                                <input class="form-control" type="text" ng-model="model.nombre" required />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon2">Email*</span>
-                            <input class="form-control" name="email" type="email" placeholder="Email de contacto" ng-model="model.email" required/>
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon2">Email*</span>
+                                <input class="form-control" name="email" type="email" placeholder="Email de contacto" ng-model="model.email" required/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="alert alert-warning alert-dismissible" role="alert" ng-show="contactForm.email.$dirty && contactForm.email.$error.email">
-                            <strong>Formato de email incorrecto</strong>
+                        <div class="col-sm-12">
+                            <div class="alert alert-warning alert-dismissible" role="alert" ng-show="contactForm.email.$dirty && contactForm.email.$error.email">
+                                <strong>Formato de email incorrecto</strong>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon3">Teléfono*</span>
-                            <input class="form-control" type="text" ng-model="model.telefono" required />
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon3">Teléfono*</span>
+                                <input class="form-control" type="text" ng-model="model.telefono" required />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <textarea class="form-control" rows="5" ng-model="model.duda" placeholder="Deja aquí tu duda..." id="comment" required></textarea>
-                    </div>
-                    <div class="col-sm-12">
-                        <button class="btn btn-default" ng-disabled="contactForm.$invalid" type="submit"> Enviar </button>
-                    </div>
-            </form>
-            <div class="alert alert-success" ng-if ="hiddenGood" role="alert">Tu mensaje ha sido enviado con éxito.</div>
-            <div class="alert alert-success" ng-if ="hiddenBad" role="alert">Lo siento, tu mensaje no ha podido ser enviado.Inténtelo más tarde.</div>
-
+                        <div class="col-sm-12">
+                            <textarea class="form-control" rows="5" ng-model="model.duda" placeholder="Deja aquí tu duda..." id="comment" required></textarea>
+                        </div>
+                        <div class="col-sm-12">
+                            <button class="btn btn-default" ng-disabled="contactForm.$invalid" type="submit"> Enviar </button>
+                        </div>
+                </form>
+                <div class="alert alert-success" ng-if="hiddenGood" role="alert">Tu mensaje ha sido enviado con éxito.</div>
+                <div class="alert alert-success" ng-if="hiddenBad" role="alert">Lo siento, tu mensaje no ha podido ser enviado.Inténtelo más tarde.</div>
+                </div>
             </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <h3> Teléfonos: </h3>
+            <p> 677 15 34 82 </p>
+            <p> 693 34 84 64 </p>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <h3> Email: </h3>
+            <p> info@academiahipathia.com </p>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <h3> Dirección: </h3>
+            <p> Avenida del Hospital, 5 </p>
+            <p>Fuenlabrada</p>
         </div>
     </div>
 </div>

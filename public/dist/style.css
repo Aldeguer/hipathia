@@ -6867,6 +6867,9 @@ li > a:hover {
 .containerCampus h3 {
   color: #9b59b6;
 }
+.containerContacto {
+  margin: 0 30px;
+}
 .map {
   width: 100%;
   height: 300px;
@@ -6879,7 +6882,8 @@ li > a:hover {
 .btn {
   margin-top: 20px;
 }
-h4 {
+h4,
+h3 {
   color: #9b59b6;
 }
 /*!
