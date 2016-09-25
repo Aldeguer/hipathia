@@ -2,7 +2,7 @@ hypathiaAcademy.constant('paths', {
 
     url: {
         home: '/',
-        home: '',
+        root: '',
         notFound: '/sorry',
         universidades: '/universidades',
         // Revisar si construir url con id o con nombre
@@ -14,9 +14,9 @@ hypathiaAcademy.constant('paths', {
     titles: {
         home: 'Hipathia',
         notFound: 'Sorry not found',
-        universidades: 'Universidades',
+        universidades: 'Universidad',
         detailUni: 'Universidad',
-        grados: 'Grados y asignaturas',
+        grados: 'Grado y asignaturas',
         contacto: 'Contacto'
 
     }

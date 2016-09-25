@@ -6,6 +6,7 @@ hypathiaAcademy.controller('AppController', ['$scope', '$window', '$location', '
         /*** controller properties ***/
         controller.titles = {};
         controller.titles[paths.url.home] = paths.titles.home;
+        controller.titles[paths.url.root] = paths.titles.home;
         controller.titles[paths.url.universidades] = paths.titles.universidades;
         controller.titles[paths.url.detailUni] = paths.titles.detailUni;
         controller.titles[paths.url.grados] = paths.titles.grados;
@@ -23,7 +24,13 @@ hypathiaAcademy.controller('AppController', ['$scope', '$window', '$location', '
         //el título de nuestra app.
         $scope.$on('$locationChangeSuccess', function() {
             //dar una vuelta para universidades/:id
-            $scope.model.title = controller.titles[$location.path()] || '404 Not Found';
+            if ($location.path().indexOf('universidades') > -1) {
+                $scope.model.title = paths.titles.universidades;
+            } else if ($location.path().indexOf('grados') > -1) {
+                $scope.model.title = paths.titles.grados;
+            } else {
+                $scope.model.title = controller.titles[$location.path()] || '404 Not Found';
+            }
         });
 
         $scope.$on('ChangeTitle', function(title) {

@@ -9,6 +9,10 @@ hypathiaAcademy.config(['$stateProvider', '$urlRouterProvider', 'paths', 'apiPat
                 url: paths.url.home,
                 templateUrl: 'code/Home/HomeView.html',
                 controller: 'HomeController',
+            }).state('root', {
+                url: paths.url.root,
+                templateUrl: 'code/Home/HomeView.html',
+                controller: 'HomeController',
             })
             .state('universidades', {
                 url: paths.url.universidades,
