@@ -51,7 +51,7 @@ hypathiaAcademy.controller('GradosController', ['$scope', '$state', 'grados', 'A
                     function() {
                         alert('Error');
                     }
-                );; //Continuar por aqui TODO
+                );; 
 
             }
         }
