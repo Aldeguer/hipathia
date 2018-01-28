@@ -26,7 +26,7 @@ hypathiaAcademy.controller('GradosController', ['$scope', '$state', 'grados', 'A
                         var auxCuatri = $scope.asignaturasPre.length;
                         var startCuatri = 0;
                         while(startCuatri<auxCuatri){
-                            if($scope.asignaturasPre[startCuatri].cuatri === 2 || $scope.asignaturasPre[startCuatri].cuatri === 3){
+                            if($scope.asignaturasPre[startCuatri].cuatri === 1 || $scope.asignaturasPre[startCuatri].cuatri === 3){
                                 $scope.asignaturas = $scope.asignaturas.concat($scope.asignaturasPre[startCuatri]);
                             }
                             startCuatri++;
